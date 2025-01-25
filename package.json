@@ -1,0 +1,22 @@
+{
+  "name": "agropecuaria-dividas",
+  "version": "1.0.0",
+  "description": "Este é um aplicativo para controlar as dívidas dos clientes de uma agropecuária. É um aplicativo feito com Electron JS. ",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateussantospereira/agropecuaria-dividas.git"
+  },
+  "author": "Mateus dos Santos Pereira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mateussantospereira/agropecuaria-dividas/issues"
+  },
+  "homepage": "https://github.com/mateussantospereira/agropecuaria-dividas#readme",
+  "devDependencies": {
+    "electron": "^34.0.1"
+  }
+}
