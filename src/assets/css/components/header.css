@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background-color: var(--color-main-1);
+}
+
+header h1 {
+    margin: 0;
+}
+
+header img {
+    height: 55px;
+}

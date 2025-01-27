@@ -4,15 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- evitar ataques de Cross Site Scripting (injeção de dados) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
     <link rel="stylesheet" href="../assets/css/style.css"/>
-    <script src="../../public/js/index.js" defer></script>
+    <script src="../assets/js/renderer.js" defer></script>
     <title>Electron</title>
 </head>
 
 <body>
-    <h1>Olá mundo</h1>
+    <header>
+        <h1>Agropecuária Bonanza</h1>
+        <img src="../assets/img/logo.png">
+    </header>
 
     <a href="./pagina2.html"><button>Página 2</button></a>
+
+    <hr>
+
+    <button onclick="openChild()">Janela 2</button>
+
+    <footer>
+        <p id="dataAtual"></p>
+    </footer>
 </body>
 
 </html>
