@@ -18,5 +18,8 @@
   "homepage": "https://github.com/mateussantospereira/agropecuaria-dividas#readme",
   "devDependencies": {
     "electron": "^34.0.1"
+  },
+  "dependencies": {
+    "mysql": "^2.18.1"
   }
 }

@@ -1,14 +1,15 @@
 const { BrowserWindow, Menu } = require("electron");
 
-const createWindow = (options, file, template, child) => {
+const createWindow = (options, file, template = false, child = false) => {
     const create = () => {
+        options.icon = "src/assets/img/logo.png"; 
         const win = new BrowserWindow(options);
 
         if (template) {
             Menu.setApplicationMenu(Menu.buildFromTemplate(template));
         }
 
-        win.loadFile(`src/views/${file}`);
+        win.loadFile(`../views/${file}`);
     };
 
     const father = BrowserWindow.getFocusedWindow();
@@ -17,3 +18,5 @@ const createWindow = (options, file, template, child) => {
         create();
     }
 };
+
+module.exports = createWindow;
