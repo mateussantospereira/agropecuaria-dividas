@@ -1,10 +1,12 @@
+require("dotenv").config();
+
 console.log(`Versão do Electron: ${process.versions.electron}`);
 
-const createDatabase = require("src/database/create");
-const initApp = require("src/main/init");
+const createDatabase = require("./src/database/create");
+const initApp = require("./src/main/init");
 
 async function init() {
-    await createDatabase;
+    await createDatabase.init();
     await initApp;
 }
 

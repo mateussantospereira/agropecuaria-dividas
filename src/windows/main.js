@@ -1,5 +1,6 @@
+const path = require("path");
 const createWindow = require("../helpers/createWindow");
-const mainTemplate = require("../templates/main")
+const mainTemplate = require("../templates/main");
 
 const mainWindow = () => {
     let options = {
@@ -7,7 +8,7 @@ const mainWindow = () => {
         height: 550,
         // autoHideMenuBar: true // Esconde o menu
         webPreferences: {
-            preload: path.join(__dirname, "preload.js")
+            preload: path.join(__dirname, "../main/preload.js")
         }
     };
 
@@ -16,4 +17,4 @@ const mainWindow = () => {
     return createWindow(options, file, mainTemplate);
 }
 
-module.exports = mainWindow();
+module.exports = mainWindow;

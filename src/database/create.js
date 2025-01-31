@@ -4,6 +4,7 @@ const executeQuery = require("../helpers/executeQuery")
 
 class createDatabase {
     async init() {
+        console.log("CHEGOU AQUI")
         await this.createDatabase();
         await this.createTableRegisters();
     }
@@ -17,10 +18,14 @@ class createDatabase {
         return new Promise((resolve, reject) => {
             connection.query(sql, (error, response) => {
                 if (error) {
-                    return reject(error);
+                    return reject(
+                        console.log("Erro ao tentar criar banco de dados", error)
+                    );
                 }
 
-                return resolve(response);
+                return resolve(
+                    console.log("Banco de dados criado com êxito.")
+                );
             });
         });
     }
@@ -31,19 +36,19 @@ class createDatabase {
                 id int not null auto_increment primary key,
                 name varchar(100) not null,
                 email varchar(100) not null,
-                password varchar(100) not null,
+                password varchar(100) not null
             );
         `;
 
-        return this.createTable(sql, "registros");
+        return await this.createTable(sql, "registros");
     }
 
     async createTable(sql, name) {
         try {
             await executeQuery(sql);
-            return console.log(`A tabela ${name} foi criada.`);
+            return console.log(`A tabela ${name} foi criada com êxito.`);
         } catch (error) {
-            return console.log(`Erro ao tentar criar a tabela ${name}.`)
+            return console.log(`Erro ao tentar criar a tabela ${name}:`, error)
         }
     }
 } 

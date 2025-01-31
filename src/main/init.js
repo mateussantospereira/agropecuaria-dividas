@@ -4,9 +4,9 @@ const ipcMainRoutes = require("../routers/ipcMain");
 
 function initApp() {
     app.whenReady().then(() => {
-        mainWindow;
+        mainWindow();
 
-        ipcMainRoutes;
+        ipcMainRoutes();
     });
 }
 

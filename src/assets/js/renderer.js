@@ -1,13 +1,7 @@
 // Processo de renderização
 
-console.log(`Electron: ${api.verElectron()}`);
+async function getApi() {
+    const response = await apiRegister.getData({ user: "Mateus" });
 
-function openChild() {
-    api.open();
+    console.log(response);
 }
-
-api.send("Olá mundo!");
-
-api.on((event, message) => {
-    console.log("Processo de renderização recebeu: " + message);
-})

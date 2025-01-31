@@ -1,9 +1,13 @@
 // IPC Renderer routes
 
-const apiRegister = require("../apis/register");
+const { contextBridge, ipcRenderer } = require("electron");
+//const apiRegister = require("../apis/register");
 
 function ipcRendererRoutes() {
-    apiRegister;
+    //apiRegister();
+    contextBridge.exposeInMainWorld("apiRegister", {
+        getData: (data) => ipcRenderer.invoke("get-data", data),
+    });
 }
 
-module.exports = ipcRendererRoutes();
+module.exports = ipcRendererRoutes;

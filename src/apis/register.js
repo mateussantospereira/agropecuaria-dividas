@@ -2,6 +2,8 @@ const { contextBridge, ipcRenderer } = require("electron");
 
 function apiRegister() {
     contextBridge.exposeInMainWorld("apiRegister", {
+        getData: (data) => ipcRenderer.invoke("get-data", data),
+
         verElectron: () => process.versions.electron,
 
         sendLogin: (data) => ipcRenderer.send("send-login", data),
@@ -15,4 +17,4 @@ function apiRegister() {
     });
 }
 
-module.exports = apiRegister();
+module.exports = apiRegister;

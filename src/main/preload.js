@@ -1,5 +1,7 @@
-const ipcRenderer = require("../routers/ipcRenderer");
+const ipcRendererRoutes = require("../routers/ipcRenderer");
 
-function preload() {
-    ipcRenderer
-}
+//function preload() {
+    ipcRendererRoutes();
+//}
+
+//preload();

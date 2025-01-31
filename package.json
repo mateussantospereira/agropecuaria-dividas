@@ -20,6 +20,7 @@
     "electron": "^34.0.1"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
     "mysql": "^2.18.1"
   }
 }

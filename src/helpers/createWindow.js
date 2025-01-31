@@ -9,7 +9,7 @@ const createWindow = (options, file, template = false, child = false) => {
             Menu.setApplicationMenu(Menu.buildFromTemplate(template));
         }
 
-        win.loadFile(`../views/${file}`);
+        win.loadFile(`src/views/${file}`);
     };
 
     const father = BrowserWindow.getFocusedWindow();
