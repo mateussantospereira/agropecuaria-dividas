@@ -1,4 +1,5 @@
 const { BrowserWindow, Menu } = require("electron");
+const ejse = require("ejs-electron");
 
 const createWindow = (options, file, template = false, child = false) => {
     const create = () => {
@@ -9,7 +10,9 @@ const createWindow = (options, file, template = false, child = false) => {
             Menu.setApplicationMenu(Menu.buildFromTemplate(template));
         }
 
-        win.loadFile(`src/views/${file}`);
+        ejse.data("name", "Mateus")
+
+        win.loadFile(`src/views/pages/${file}`);
     };
 
     const father = BrowserWindow.getFocusedWindow();

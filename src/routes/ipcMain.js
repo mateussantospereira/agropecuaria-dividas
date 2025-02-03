@@ -1,14 +1,11 @@
 // IPC Main
 
 const { ipcMain } = require("electron");
+const registerController = require("../controllers/register");
 
 function IpcMainRoutes() {
-    ipcMain.on("open-child", () => childWindow());
-
-    ipcMain.on("renderer-message", (event, message) => {
-        console.log(`Processo principal recebeu: ${message}`);
-        event.reply("main-message", "Mensagem recebida");
-    });
+    console.log(typeof registerController.login);
+    ipcMain.handle("login", registerController.login);
 
     ipcMain.handle("get-data", async (event, data) => {
         console.log("Dados recebidos: ", data);

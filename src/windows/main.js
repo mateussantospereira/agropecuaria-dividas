@@ -8,11 +8,11 @@ const mainWindow = () => {
         height: 550,
         // autoHideMenuBar: true // Esconde o menu
         webPreferences: {
-            preload: path.join(__dirname, "../main/preload.js")
+            preload: path.join(__dirname, "../routes/ipcRenderer.js")
         }
     };
 
-    let file = "../views/index.html";
+    let file = "home.ejs";
 
     return createWindow(options, file, mainTemplate);
 }

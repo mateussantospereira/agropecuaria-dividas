@@ -4,7 +4,6 @@ const executeQuery = require("../helpers/executeQuery")
 
 class createDatabase {
     async init() {
-        console.log("CHEGOU AQUI")
         await this.createDatabase();
         await this.createTableRegisters();
     }

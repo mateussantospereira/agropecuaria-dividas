@@ -1,6 +1,6 @@
 const { app } = require("electron");
 const mainWindow = require("../windows/main");
-const ipcMainRoutes = require("../routers/ipcMain");
+const ipcMainRoutes = require("../routes/ipcMain");
 
 function initApp() {
     app.whenReady().then(() => {
