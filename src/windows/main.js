@@ -4,15 +4,15 @@ const mainTemplate = require("../templates/main");
 
 const mainWindow = () => {
     let options = {
-        width: 800,
-        height: 550,
+        width: 400,
+        height: 400,
         // autoHideMenuBar: true // Esconde o menu
         webPreferences: {
             preload: path.join(__dirname, "../routes/ipcRenderer.js")
         }
     };
 
-    let file = "home.ejs";
+    let file = "login.ejs";
 
     return createWindow(options, file, mainTemplate);
 }

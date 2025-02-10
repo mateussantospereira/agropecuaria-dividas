@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
     <%- include("../components/head.ejs", { title: "Principal" }); %>
+    <%- include("../components/authToken.ejs", { type: 2 }) %>
 
 <body>
     <%- include("../components/header.ejs"); %>
@@ -19,41 +20,5 @@
         <button>Entrar</button>
     </form>
 </body>
-
-<script>
-    const form = document.getElementById("form");
-    const message = document.getElementById("message");
-
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const inputs = Array.from(form.elements);
-        inputs.pop();
-        let data = {};
-
-        inputs.forEach((input) => {
-             data[input.id] = input.value;
-        });
-
-        console.log(data);
-
-        console.log(inputs)
-
-        console.log(form);
-
-        login(data)
-    })
-
-    async function login(data) {
-        const response = await apiRegister.login(data);
-
-        if (response.error == true) {
-            message.style.display = "block";
-            message.innerText = response.error;
-        }
-
-        console.log(response);
-    }
-</script>
 
 </html>

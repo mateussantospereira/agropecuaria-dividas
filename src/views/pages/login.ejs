@@ -4,9 +4,11 @@
     <%- include("../components/head.ejs", { title: "Entrar" }); %>
 
 <body>
-    <div class="center">
+    <div id="login">
         <div>
-            <h2>Entrar</h2>
+            <div class="center">
+                <h2>Entrar</h2>
+            </div>
 
             <p id="message" style="display: none;"></p>
 
@@ -14,7 +16,9 @@
                 <input type="text" id="email" required> <br>
                 <input type="password" id="password" required> <br>
 
-                <button>Entrar</button>
+                <div class="center">
+                    <button>Entrar</button>
+                </div>
             </form>
         </div>
     </div>
@@ -44,9 +48,13 @@
         if (response.error == true) {
             message.style.display = "block";
             message.innerText = response.error;
+            return;
         }
+        
+        localStorage.setItem("authToken", response.data.token)
+        localStorage.setItem("name", response.data.name);
 
-        console.log(response);
+        window.location.href = "home.ejs";
     }
 </script>
 

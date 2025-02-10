@@ -6,3 +6,9 @@ body {
     font-size: var(--font-size);
     background-color: var(--background-color);
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

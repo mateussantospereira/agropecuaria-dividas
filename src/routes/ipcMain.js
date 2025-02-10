@@ -2,16 +2,11 @@
 
 const { ipcMain } = require("electron");
 const registerController = require("../controllers/register");
+const authToken = require("../middlewares/authToken");
 
 function IpcMainRoutes() {
-    console.log(typeof registerController.login);
     ipcMain.handle("login", registerController.login);
-
-    ipcMain.handle("get-data", async (event, data) => {
-        console.log("Dados recebidos: ", data);
-
-        return { message: "Dados Recebidos no processo principal.", data: data };
-    });
+    ipcMain.handle("authToken", authToken);
 }
 
 module.exports = IpcMainRoutes;

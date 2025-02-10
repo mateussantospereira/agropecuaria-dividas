@@ -2,6 +2,7 @@ const registerModel = require("../models/register");
 const registerFields = require("../fields/register");
 const checkInputs = require("../lib/checkInputs");
 const response = require("../helpers/response");
+const createToken = require("../helpers/createToken");
 
 class registerController {
     async login(event, data) {
@@ -16,15 +17,15 @@ class registerController {
 
         const user = await registerModel.get(data.email);
 
-        if (!user[0]) {
-            return response(true, "Usuário não encontrado.");
+        if (!user[0] || user[0].password != data.password) {
+            return response(true, "Credenciais inválidas.");
         }
 
-        if (user[0].password != data.password) {
-            return response(true, "Senha errada.");
-        }
+        const token = createToken(user);
 
-        return response(false, "Usuário autenticado.");
+        const resData = { name: user.name, token: token }
+
+        return response(false, "Usuário autenticado.", resData);
     }
 }
 
