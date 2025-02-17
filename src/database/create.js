@@ -43,6 +43,32 @@ class createDatabase {
         return await this.createTable(sql, "registros");
     }
 
+    async createTableDebts() {
+        const sql = `
+            CREATE TABLE IF NOT EXISTS clients (
+                id int not null auto_increment primary key,
+                name varchar(100) not null,
+                phone varchar(15) not null
+            );
+        `;
+
+        return await this.createTable(sql, "clientes");
+    }
+
+    async createTableDebts() {
+        const sql = `
+            CREATE TABLE IF NOT EXISTS debts (
+                id int not null auto_increment primary key,
+                client varchar(100) not null,
+                value int not null,
+                date date not null,
+                foreign key (client) references clients(name)
+            );
+        `;
+
+        return await this.createTable(sql, "dívidas");
+    }
+
     async createTable(sql, name) {
         try {
             await executeQuery(sql);

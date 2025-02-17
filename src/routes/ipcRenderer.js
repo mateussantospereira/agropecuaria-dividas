@@ -7,3 +7,8 @@ contextBridge.exposeInMainWorld("apiRegister", {
 
     authToken: (data) => ipcRenderer.invoke("authToken", data),
 });
+
+contextBridge.exposeInMainWorld("apiClient", {
+    list: () => ipcRenderer.invoke("list"),
+    create: (data) => ipcRenderer.invoke("create", data)
+});

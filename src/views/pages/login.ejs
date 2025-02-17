@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <%- include("../components/head.ejs", { title: "Entrar" }); %>
+    <%- include("../components/head", { title: "Entrar" }); %>
 
 <body>
     <div id="login">
@@ -10,7 +10,7 @@
                 <h2>Entrar</h2>
             </div>
 
-            <p id="message" style="display: none;"></p>
+            <%- include("../components/message"); %>
 
             <form id="form">
                 <input type="text" id="email" required> <br>
@@ -31,25 +31,13 @@
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        const inputs = Array.from(form.elements);
-        inputs.pop();
-        let data = {};
-
-        inputs.forEach((input) => {
-             data[input.id] = input.value;
-        });
+        const data = getDataForm(form);
 
         login(data);
     })
 
     async function login(data) {
-        const response = await apiRegister.login(data);
-
-        if (response.error == true) {
-            message.style.display = "block";
-            message.innerText = response.error;
-            return;
-        }
+        const response = await getApi(apiRegister.login, data, true);
         
         localStorage.setItem("authToken", response.data.token)
         localStorage.setItem("name", response.data.name);
