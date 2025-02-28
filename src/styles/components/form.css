@@ -1,5 +1,9 @@
-form input {
+form {
     margin: 10px;
+}
+
+form input {
+    margin: 10px 0;
     width: 300px;
     font-family: var(--font-family);
     font-size: var(--font-size);

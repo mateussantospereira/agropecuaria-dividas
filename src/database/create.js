@@ -6,6 +6,8 @@ class createDatabase {
     async init() {
         await this.createDatabase();
         await this.createTableRegisters();
+        await this.createTableClients();
+        await this.createTableDebts();
     }
 
     async createDatabase() {
@@ -33,8 +35,8 @@ class createDatabase {
         const sql = `
             CREATE TABLE IF NOT EXISTS registers (
                 id int not null auto_increment primary key,
+                email varchar(100) not null unique,
                 name varchar(100) not null,
-                email varchar(100) not null,
                 password varchar(100) not null,
                 type int not null
             );
@@ -43,11 +45,11 @@ class createDatabase {
         return await this.createTable(sql, "registros");
     }
 
-    async createTableDebts() {
+    async createTableClients() {
         const sql = `
             CREATE TABLE IF NOT EXISTS clients (
                 id int not null auto_increment primary key,
-                name varchar(100) not null,
+                name varchar(100) not null unique,
                 phone varchar(15) not null
             );
         `;

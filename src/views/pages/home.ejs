@@ -7,18 +7,63 @@
 <body>
     <%- include("../components/header.ejs"); %>
 
-    <h1>Teste EJS Electron</h1>
+    <div id="buttons">
+        <a href="./createClient.ejs">
+            <button>Cadastrar cliente</button>
+        </a>
+    </div>
+   
+    <button onclick="teste()">Olá</button>
+    <script>const teste = ()=>{console.log("olá mundo")}</script>
+    <div class="center">
+        <h1>Início</h1>
+    </div>
 
-    <a href="./login.ejs">Link</a>
-    
-    <p id="message" style="display: none;"></p>
+    <p>
+    Organizar as dívidas de uma agropecuária.
+    </p>
 
-    <form id="form">
-        <input type="text" id="email" required> <br>
-        <input type="password" id="password" required> <br>
+    <%- include("../components/message"); %>
 
-        <button>Entrar</button>
-    </form>
+    <div class="center">
+        <%- include("../components/search"); %>
+    </div>
+
+    <div class="center">
+        <div id="table"></div>
+    </div>
 </body>
+
+<%- include("../components/scripts"); %>
+
+<script>
+    const table = document.getElementById("table");
+    const search = document.getElementById("search");
+    
+    async function init() {
+        const head = {
+            client: "Cliente",
+            value: "Valor",
+            date: "Data",
+            hour: "Hora",
+            details: "Detalhes do cliente"
+        };
+
+        const response = await apiDebts.list();
+
+        console.log(response);
+
+        if (emptyTable(response)) {
+            return;
+        }
+
+        const text = createTable(response, head);
+
+        table.innerHTML = text;
+        search.style.display = "block";
+    }
+
+    init();
+</script>
 
 </html>

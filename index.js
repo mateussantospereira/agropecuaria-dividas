@@ -1,5 +1,11 @@
 require("dotenv").config();
 
+const path = require("path");
+
+require("electron-reload")(__dirname, {
+    electron: path.join(__dirname, "node_modules", ".bin", "electron")
+});
+
 console.log(`Versão do Electron: ${process.versions.electron}`);
 
 const createDatabase = require("./src/database/create");

@@ -2,23 +2,41 @@
 <html lang="pt-br">
 
     <%- include("../components/head", { title: "Principal" }); %>
-    <%- include("../components/authToken", { type: 2 }) %>
+    <%- include("../components/authToken", { type: 2 }); %>
 
 <body>
-    <%- include("../components/header.ejs"); %>
+    <%- include("../components/header"); %>
 
     <h1>Cadastro de cliente</h1>
 
     <a href="./login.ejs">Link</a>
     
-    <p id="message" style="display: none;"></p>
+    <%- include("../components/message"); %>
 
     <form id="form">
-        <input type="text" id="email" required> <br>
-        <input type="password" id="password" required> <br>
+        <label>Nome:</label><br>
+        <input type="text" id="name" required> <br>
+        <label>Telefone:</label><br>
+        <input type="text" id="phone" required> <br>
 
-        <button>Entrar</button>
+        <button>Cadastrar</button>
     </form>
 </body>
+
+<%- include("../components/scripts"); %>
+
+<script>
+    const form = document.getElementById("form");
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const data = getDataForm(form);
+
+        const res = getApi(apiClient.create, data, true);
+
+        console.log(res);
+    });
+</script>
 
 </html>

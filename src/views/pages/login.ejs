@@ -13,8 +13,10 @@
             <%- include("../components/message"); %>
 
             <form id="form">
-                <input type="text" id="email" required> <br>
-                <input type="password" id="password" required> <br>
+                <label>E-mail:</label><br>
+                <input value="mateus@gmail.com" type="text" id="email" required> <br>
+                <label>Senha</label><br>
+                <input value="123" type="password" id="password" required> <br>
 
                 <div class="center">
                     <button>Entrar</button>
@@ -23,6 +25,8 @@
         </div>
     </div>
 </body>
+
+<%- include("../components/scripts"); %>
 
 <script>
     const form = document.getElementById("form");
@@ -42,7 +46,7 @@
         localStorage.setItem("authToken", response.data.token)
         localStorage.setItem("name", response.data.name);
 
-        window.location.href = "home.ejs";
+        apiWindow.openMainWindow();
     }
 </script>
 

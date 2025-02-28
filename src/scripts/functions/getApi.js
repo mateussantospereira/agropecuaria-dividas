@@ -2,7 +2,9 @@ async function getApi(func, params = null, message = false, link = false) {
     const response = await func(params);
 
     if (message) {
-        errorMessage(response);
+        if (errorMessage(response)) {
+            return response;
+        }
     }
 
     if (link) {

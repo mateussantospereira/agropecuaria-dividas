@@ -1,7 +1,7 @@
 const { BrowserWindow, Menu } = require("electron");
 const ejse = require("ejs-electron");
 
-const createWindow = (options, file, template = false, child = false) => {
+const createWindow = (options, file, template = false, child = false, data = null) => {
     const create = () => {
         options.icon = "src/assets/img/logo.png"; 
         const win = new BrowserWindow(options);
@@ -9,8 +9,10 @@ const createWindow = (options, file, template = false, child = false) => {
         if (template) {
             Menu.setApplicationMenu(Menu.buildFromTemplate(template));
         }
-
-        ejse.data("name", "Mateus")
+       
+        if (data) { 
+            ejse.data(data);
+        }
 
         win.loadFile(`src/views/pages/${file}`);
     };

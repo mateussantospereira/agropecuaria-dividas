@@ -1,5 +1,5 @@
 const clientsModels = require("../models/clients");
-const clientsFields = require("../fields/clents");
+const clientsFields = require("../fields/clients");
 const checkInputs = require("../lib/checkInputs");
 
 class clientsController {
@@ -20,8 +20,14 @@ class clientsController {
         }
 
         data = inputs.data;
+        
+        let client = await clientsModels.get(data.name);
 
-        return await clientsModels.get(data);
+        if (client[0]) {
+            return response(true, "Erro. Cliente existente.");
+        }
+
+        return await clientsModels.create(data);
     }
 }
 
