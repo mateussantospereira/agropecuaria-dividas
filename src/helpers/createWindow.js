@@ -3,7 +3,14 @@ const ejse = require("ejs-electron");
 
 const createWindow = (options, file, template = false, child = false, data = null) => {
     const create = () => {
-        options.icon = "src/assets/img/logo.png"; 
+        options = Object.assign(options, {
+            icon: "src/assets/img/logo.png",
+            // autoHideMenuBar: true // Esconde o menu
+            webPreferences: {
+                preload: path.join(__dirname, "../routes/ipcRenderer.js")
+            }
+        });
+
         const win = new BrowserWindow(options);
 
         if (template) {

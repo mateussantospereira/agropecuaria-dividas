@@ -21,7 +21,7 @@ class debtsController {
 
             e.details = {
                 text: "Detalhes",
-                action: `apiWindow.openClientWindow({ name: '${e.client}' })`
+                action: `apiWindow.openClient({ name: '${e.client}' })`
             };
         });
         return list;

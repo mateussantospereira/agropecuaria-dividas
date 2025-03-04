@@ -17,6 +17,7 @@ contextBridge.exposeInMainWorld("apiDebts", {
 });
 
 contextBridge.exposeInMainWorld("apiWindow", {
-    openMainWindow: () => ipcRenderer.invoke("openMainWindow"),
-    openClientWindow: (data) => ipcRenderer.invoke("openClientWindow", data)
+    openMain: () => ipcRenderer.invoke("openMain"),
+    openCreateClient: () => ipcRenderer.invoke("openCreateClientWindow"),
+    openClient: (data) => ipcRenderer.invoke("openClientWindow", data)
 });
