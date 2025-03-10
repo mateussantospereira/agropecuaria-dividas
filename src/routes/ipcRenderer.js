@@ -13,11 +13,18 @@ contextBridge.exposeInMainWorld("apiClient", {
 });
 
 contextBridge.exposeInMainWorld("apiDebts", {
-    list: () => ipcRenderer.invoke("listDebts")
+    list: () => ipcRenderer.invoke("listDebts"),
+    get: (data) => ipcRenderer.invoke("getDebts", data),
+    create: (data) => ipcRenderer.invoke("createDebts", data),
+    delete: (data) => ipcRenderer.invoke("deleteDebts", data),
 });
 
 contextBridge.exposeInMainWorld("apiWindow", {
-    openMain: () => ipcRenderer.invoke("openMain"),
+    openMain: () => ipcRenderer.invoke("openMainWindow"),
+    openClient: (data) => ipcRenderer.invoke("openClientWindow", data),
     openCreateClient: () => ipcRenderer.invoke("openCreateClientWindow"),
-    openClient: (data) => ipcRenderer.invoke("openClientWindow", data)
+});
+
+contextBridge.exposeInMainWorld("apiDialog", {
+    openDialog: (data) => ipcRenderer.invoke("openDialog", data),
 });

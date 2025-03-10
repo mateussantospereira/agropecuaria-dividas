@@ -4,11 +4,39 @@
     <%- include("../components/head", { title: "Título" }); %>
 
 <body>
-    <%- include("../components/header"); %>
+    <h2><%- name %></h2>
 
-    <h1><%- name %></h1>
+    <%- include("../components/table"); %>
+
+    <%- include("../components/totalValue"); %>
 </body>
 
 <%- include("../components/scripts") %>
+
+<script>
+    const table = document.getElementById("table");
+    const search = document.getElementById("search");
+    const name = "<%- name %>";
+    const token = localStorage.getItem("authToken");
+
+    async function init() {
+        const head = {
+            value: "Valor",
+            date: "Data",
+            hour: "Hora",
+            delete: "Deletar"
+        };
+
+        const response = await apiDebts.get(name);
+
+        const text = createTable(response, head);
+
+        table.innerHTML = text;
+        search.style.display = "block";
+        getTotalValue();
+    }
+
+    init();
+</script>
 
 </html>

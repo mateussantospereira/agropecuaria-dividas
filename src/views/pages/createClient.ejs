@@ -5,8 +5,6 @@
     <%- include("../components/authToken", { type: 2 }); %>
 
 <body>
-    <%- include("../components/header"); %>
-
     <h1>Cadastro de cliente</h1>
 
     <a href="./login.ejs">Link</a>
@@ -34,8 +32,6 @@
         const data = getDataForm(form);
 
         const res = getApi(apiClient.create, data, true);
-
-        console.log(res);
     });
 </script>
 

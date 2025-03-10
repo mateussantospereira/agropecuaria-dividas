@@ -1,4 +1,5 @@
 const { BrowserWindow, Menu } = require("electron");
+const path = require("path");
 const ejse = require("ejs-electron");
 
 const createWindow = (options, file, template = false, child = false, data = null) => {

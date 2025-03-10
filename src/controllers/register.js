@@ -23,7 +23,13 @@ class registerController {
 
         const token = createToken(user);
 
-        const resData = { name: user.name, token: token }
+        const resData = { name: user[0].name, token: token }
+
+        event.sender.user = {
+            nameUser: user[0].name,
+            typeUser: user[0].type,
+            token: token
+        };
 
         return response(false, "Usuário autenticado.", resData);
     }

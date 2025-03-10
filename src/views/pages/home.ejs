@@ -5,18 +5,12 @@
     <%- include("../components/authToken", { type: 2 }) %>
 
 <body>
-    <%- include("../components/header.ejs"); %>
+    <%- include("../components/header"); %>
 
-    <div id="buttons">
-        <a href="./createClient.ejs">
-            <button>Cadastrar cliente</button>
-        </a>
-    </div>
-   
-    <button onclick="teste()">Olá</button>
-    <script>const teste = ()=>{console.log("olá mundo")}</script>
+    <%- include("../components/buttons", { type: typeUser }); %>
+
     <div class="center">
-        <h1>Início</h1>
+        <h2>Dívidas</h2>
     </div>
 
     <p>
@@ -25,13 +19,7 @@
 
     <%- include("../components/message"); %>
 
-    <div class="center">
-        <%- include("../components/search"); %>
-    </div>
-
-    <div class="center">
-        <div id="table"></div>
-    </div>
+    <%- include("../components/table"); %>
 </body>
 
 <%- include("../components/scripts"); %>

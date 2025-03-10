@@ -3,3 +3,9 @@ button {
     font-family: var(--font-family);
     font-size: var(--font-size);
 }
+
+#buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
